@@ -20,7 +20,9 @@ class Main extends EntryPoint
     protected function init() : self
     {
 
-        $this->shortcodeInit();
+        $this
+            ->scriptAdd()
+            ->shortcodeInit();
         
         return $this;
 
@@ -52,7 +54,7 @@ class Main extends EntryPoint
 
             $lag = 3600;
 
-            $start_time = (int)$event->evcal_srow + $lag;
+            $start_time = (int)$event->evcal_srow - $lag;
             $end_time = (int)$event->evcal_erow + $lag;
 
             date_default_timezone_set('UTC');
@@ -71,11 +73,38 @@ class Main extends EntryPoint
 <div id="conferencier-block-<?= $atts['event'] ?>" style="margin: 0px; display: none;">
 <?= $content ?>
 </div>
+<script>
+ConferencierClient.delay('conferencier-block-<?= $atts['event'] ?>', <?= ($start_time - $now) * 1000 ?>);
+</script>
 <?php
 
                 return ob_get_clean();
 
             }
+
+        });
+
+        return $this;
+
+    }
+
+    /**
+     * Add front-end script.
+     * @since 0.0.4
+     * 
+     * @return $this
+     */
+    protected function scriptAdd() : self
+    {
+
+        add_action('wp_enqueue_scripts', function() {
+
+            wp_enqueue_script(
+                'conferencier-client',
+                $this->url.'assets/js/conferencier-client.js',
+                [],
+                '0.0.1'
+            );
 
         });
 
