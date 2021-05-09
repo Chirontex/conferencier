@@ -3,13 +3,13 @@
  * Plugin Name: Conferencier
  * Plugin URI: https://github.com/chirontex/conferencier
  * Description: Добавляет шорткод, скрывающий и открывающий контент мероприятия, созданного с помощью MyEventON.
- * Version: 0.0.2
+ * Version: 0.0.3
  * Author: Dmitry Shumilin
  * Author URI: mailto://chirontex@yandex.ru
  * 
  * @package Conferencier
  * @author Dmitry Shumilin (chirontex@yandex.ru)
- * @since 0.0.2
+ * @since 0.0.3
 */
 use Magnate\Injectors\EntryPointInjector;
 use Conferencier\Main;
