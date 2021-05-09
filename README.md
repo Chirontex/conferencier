@@ -1,1 +1,1 @@
-# Conferencier 0.0.4
+# Conferencier 1.0.0

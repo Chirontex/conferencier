@@ -54,10 +54,18 @@ class Main extends EntryPoint
 
             $lag = 3600;
 
-            $start_time = (int)$event->evcal_srow - $lag;
-            $end_time = (int)$event->evcal_erow + $lag;
+            $start_time = (int)$event->evcal_srow;
+            $end_time = (int)$event->evcal_erow;
 
             date_default_timezone_set('UTC');
+
+            $start_time = date("Y-m-d H:i:s", $start_time);
+            $end_time = date("Y-m-d H:i:s", $end_time);
+
+            date_default_timezone_set($event->_evo_tz);
+
+            $start_time = strtotime($start_time) - $lag;
+            $end_time = strtotime($end_time) + $lag;
 
             $now = time();
 
