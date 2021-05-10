@@ -78,7 +78,7 @@ class Main extends EntryPoint
                 ob_start();
 
 ?>
-<div id="conferencier-block-<?= $atts['event'] ?>" style="margin: 0px; display: none;">
+<div id="conferencier-block-<?= $atts['event'] ?>" style="margin: 0px auto; display: none;">
 <?= $content ?>
 </div>
 <script>
@@ -111,7 +111,7 @@ ConferencierClient.delay('conferencier-block-<?= $atts['event'] ?>', <?= ($start
                 'conferencier-client',
                 $this->url.'assets/js/conferencier-client.js',
                 [],
-                '0.0.1'
+                '0.0.3'
             );
 
         });
